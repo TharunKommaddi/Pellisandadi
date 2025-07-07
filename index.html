@@ -1,1 +1,1189 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pellisandadi - Professional Telugu Matrimonial Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #0f172a;
+            --accent-color: #059669;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --border-light: #e2e8f0;
+            --border-medium: #cbd5e1;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+        }
+
+        /* Typography */
+        .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+        .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+        .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+        .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+        .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+        .text-base { font-size: 1rem; line-height: 1.5rem; }
+        .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+        .text-xs { font-size: 0.75rem; line-height: 1rem; }
+
+        .font-black { font-weight: 900; }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .font-medium { font-weight: 500; }
+        .font-normal { font-weight: 400; }
+
+        /* Header */
+        .header {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-light);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary-color);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.625rem 1.25rem;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            font-size: 0.875rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            line-height: 1.5;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-medium);
+        }
+
+        .btn-outline:hover {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border-color: var(--border-medium);
+        }
+
+        .btn-lg {
+            padding: 0.875rem 1.75rem;
+            font-size: 1rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 3px;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            width: 20px;
+            height: 2px;
+            background: var(--text-secondary);
+            transition: all 0.3s ease;
+            border-radius: 1px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 72px;
+            min-height: 100vh;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(5, 150, 105, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 60% 40%, rgba(37, 99, 235, 0.03) 0%, transparent 50%);
+        }
+
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.025em;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        /* Registration Form */
+        .registration-card {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--border-light);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .form-tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-md);
+            padding: 0.25rem;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 0.625rem 1rem;
+            border: none;
+            background: transparent;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+
+        .tab-btn.active {
+            background: var(--bg-primary);
+            color: var(--primary-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-control::placeholder {
+            color: var(--text-muted);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            padding: 0.75rem 0;
+        }
+
+        .radio-group > span {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .radio-item input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary-color);
+        }
+
+        .radio-item label {
+            font-size: 0.875rem;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section.bg-secondary {
+            background: var(--bg-secondary);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            transition: all 0.2s ease;
+        }
+
+        .feature-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--primary-color);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.5;
+            font-size: 0.875rem;
+        }
+
+        /* Profile Cards */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .profile-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .profile-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .profile-image {
+            height: 200px;
+            background: var(--bg-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .profile-info {
+            padding: 1.5rem;
+        }
+
+        .profile-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .profile-details {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-size: 0.875rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            font-size: 0.875rem;
+        }
+
+        .contact-info {
+            margin-top: 1rem;
+        }
+
+        .contact-info div {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .registration-card {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .auth-buttons {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .registration-card {
+                padding: 1.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .section-header h2 {
+                font-size: 1.875rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-medium);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <div class="logo-icon">♥</div>
+                Pellisandadi
+            </a>
+            <nav class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#profiles" class="nav-link">Profiles</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="#login" class="btn btn-outline">Sign In</a>
+                <a href="#register" class="btn btn-primary">Get Started</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content fade-in-up">
+                <h1>Find Your Perfect Telugu Life Partner</h1>
+                <p class="subtitle">Join India's most trusted matrimonial platform with over 50,000 verified Telugu profiles. Your journey to finding genuine connections starts here.</p>
+                <a href="#register" class="btn btn-primary btn-lg">Start Your Search Today</a>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">50,000+</span>
+                        <span class="stat-label">Verified Profiles</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">15,000+</span>
+                        <span class="stat-label">Success Stories</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">25+</span>
+                        <span class="stat-label">Years of Trust</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="registration-card fade-in-up">
+                <div class="form-header">
+                    <h2>Join Free Today</h2>
+                    <p>Create your profile in just 2 minutes</p>
+                </div>
+                
+                <div class="form-tabs">
+                    <button class="tab-btn active" onclick="switchTab('register')">Register</button>
+                    <button class="tab-btn" onclick="switchTab('search')">Search</button>
+                </div>
+                
+                <div id="register-form" class="tab-content">
+                    <form>
+                        <div class="form-row">
+                            <input type="text" class="form-control" placeholder="First Name" required>
+                            <input type="text" class="form-control" placeholder="Last Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="radio-group">
+                                <span>Profile for:</span>
+                                <div class="radio-item">
+                                    <input type="radio" id="self" name="profile-for" value="self" checked>
+                                    <label for="self">Myself</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="relative" name="profile-for" value="relative">
+                                    <label for="relative">Relative</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <select class="form-control" required>
+                                <option value="">Age</option>
+                                <option value="18-22">18-22 years</option>
+                                <option value="23-27">23-27 years</option>
+                                <option value="28-32">28-32 years</option>
+                                <option value="33-37">33-37 years</option>
+                                <option value="38-42">38-42 years</option>
+                                <option value="43+">43+ years</option>
+                            </select>
+                            <select class="form-control" required>
+                                <option value="">Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select class="form-control" required>
+                                <option value="">Select Caste</option>
+                                <option value="brahmin">Brahmin</option>
+                                <option value="kamma">Kamma</option>
+                                <option value="kapu">Kapu</option>
+                                <option value="reddy">Reddy</option>
+                                <option value="vysya">Vysya</option>
+                                <option value="goud">Goud</option>
+                                <option value="velama">Velama</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email Address" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Mobile Number" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            Create Free Profile
+                        </button>
+                    </form>
+                </div>
+                
+                <div id="search-form" class="tab-content" style="display: none;">
+                    <form>
+                        <div class="form-row">
+                            <input type="number" class="form-control" placeholder="Min Age" min="18" max="60">
+                            <input type="number" class="form-control" placeholder="Max Age" min="18" max="60">
+                        </div>
+                        
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="">Select Caste</option>
+                                <option value="brahmin">Brahmin</option>
+                                <option value="kamma">Kamma</option>
+                                <option value="kapu">Kapu</option>
+                                <option value="reddy">Reddy</option>
+                                <option value="vysya">Vysya</option>
+                                <option value="goud">Goud</option>
+                                <option value="velama">Velama</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="">Select Profession</option>
+                                <option value="software-engineer">Software Engineer</option>
+                                <option value="doctor">Doctor</option>
+                                <option value="teacher">Teacher</option>
+                                <option value="business">Business Owner</option>
+                                <option value="government">Government Employee</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            Search Profiles
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section bg-secondary" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Pellisandadi?</h2>
+                <p>Trusted by millions of Telugu families worldwide for over 25 years. We understand the importance of finding the right life partner.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>100% Verified Profiles</h3>
+                    <p>Every profile undergoes thorough verification including ID proof, address verification, and background checks for your safety.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Smart Matching Algorithm</h3>
+                    <p>Our advanced compatibility system matches you with the most suitable profiles based on your preferences and lifestyle.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Complete Privacy Control</h3>
+                    <p>Your personal information is protected with bank-level security. Share details only with verified members you choose.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile App Available</h3>
+                    <p>Access your matches anytime, anywhere with our user-friendly mobile app available on iOS and Android.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Personal Relationship Manager</h3>
+                    <p>Get dedicated support from our experienced relationship managers who guide you throughout your journey.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌟</div>
+                    <h3>Proven Success Record</h3>
+                    <p>Join thousands of happy couples who found their perfect match through our platform. Your success story awaits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Profiles -->
+    <section class="section" id="profiles">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Telugu Profiles</h2>
+                <p>Discover verified profiles from accomplished Telugu professionals worldwide</p>
+            </div>
+            <div class="profile-grid">
+                <div class="profile-card">
+                    <div class="profile-image">👩‍💼</div>
+                    <div class="profile-info">
+                        <div class="profile-name">Priya K., 26</div>
+                        <div class="profile-details">
+                            Software Engineer, Microsoft<br>
+                            Kamma, 5'4", Never Married<br>
+                            Hyderabad, India
+                        </div>
+                        <a href="#" class="btn btn-outline" style="width: 100%;">View Profile</a>
+                    </div>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-image">👨‍⚕️</div>
+                    <div class="profile-info">
+                        <div class="profile-name">Dr. Rajesh M., 29</div>
+                        <div class="profile-details">
+                            Cardiologist, Apollo Hospitals<br>
+                            Brahmin, 5'10", Never Married<br>
+                            Bangalore, India
+                        </div>
+                        <a href="#" class="btn btn-outline" style="width: 100%;">View Profile</a>
+                    </div>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-image">👩‍🏫</div>
+                    <div class="profile-info">
+                        <div class="profile-name">Lakshmi R., 24</div>
+                        <div class="profile-details">
+                            Assistant Professor, IIT<br>
+                            Reddy, 5'3", Never Married<br>
+                            Chennai, India
+                        </div>
+                        <a href="#" class="btn btn-outline" style="width: 100%;">View Profile</a>
+                    </div>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-image">👨‍💼</div>
+                    <div class="profile-info">
+                        <div class="profile-name">Srinivas T., 31</div>
+                        <div class="profile-details">
+                            Business Analyst, Goldman Sachs<br>
+                            Kapu, 5'8", Never Married<br>
+                            New York, USA
+                        </div>
+                        <a href="#" class="btn btn-outline" style="width: 100%;">View Profile</a>
+                    </div>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-image">👩‍💻</div>
+                    <div class="profile-info">
+                        <div class="profile-name">Anitha V., 27</div>
+                        <div class="profile-details">
+                            Data Scientist, Google<br>
+                            Vysya, 5'5", Never Married<br>
+                            London, UK
+                        </div>
+                        <a href="#" class="btn btn-outline" style="width: 100%;">View Profile</a>
+                    </div>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-image">👨‍🔬</div>
+                    <div class="profile-info">
+                        <div class="profile-name">Kiran P., 28</div>
+                        <div class="profile-details">
+                            Research Scientist, ISRO<br>
+                            Goud, 5'9", Never Married<br>
+                            Pune, India
+                        </div>
+                        <a href="#" class="btn btn-outline" style="width: 100%;">View Profile</a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" class="btn btn-primary btn-lg">View All Profiles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="section bg-secondary">
+        <div class="container">
+            <div class="section-header">
+                <h2>Trusted by Telugu Families Worldwide</h2>
+                <p>Our commitment to excellence has made us the preferred choice for Telugu matrimony</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Award Winning Platform</h3>
+                    <p>Recognized as "Best Matrimonial Service" by Telugu Association of North America for 5 consecutive years.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Global Reach</h3>
+                    <p>Serving Telugu families across 50+ countries with local relationship managers in major cities worldwide.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Quick Response Time</h3>
+                    <p>Get responses to your queries within 2 hours. Our support team is available 24/7 to assist you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+        <div class="container">
+            <div style="background: var(--primary-color); color: white; padding: 3rem 2rem; border-radius: var(--radius-xl); text-align: center;">
+                <h2 style="color: white; margin-bottom: 1rem; font-size: 2rem;">Ready to Find Your Life Partner?</h2>
+                <p style="font-size: 1.125rem; margin-bottom: 2rem; opacity: 0.9;">Join thousands of Telugu families who have found their perfect match through Pellisandadi</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="#register" class="btn" style="background: white; color: var(--primary-color); font-weight: 600;">Register Free Now</a>
+                    <a href="#contact" class="btn btn-outline" style="border-color: white; color: white;">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Pellisandadi</h3>
+                    <p>India's most trusted Telugu matrimonial platform, connecting hearts and families since 1999. We understand the importance of finding the right life partner.</p>
+                    <div class="contact-info">
+                        <div>📞 +91 9347262769</div>
+                        <div>📧 support@pellisandadi.com</div>
+                        <div>🏢 Hyderabad, Telangana, India</div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#features">Our Services</a></li>
+                        <li><a href="#success">Success Stories</a></li>
+                        <li><a href="#membership">Membership Plans</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#contact-support">Contact Support</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="#facebook">Facebook</a></li>
+                        <li><a href="#instagram">Instagram</a></li>
+                        <li><a href="#twitter">Twitter</a></li>
+                        <li><a href="#youtube">YouTube</a></li>
+                        <li><a href="#linkedin">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 1999-2025 Pellisandadi.com. All Rights Reserved. | Trusted Telugu Matrimonial Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        function switchTab(tabName) {
+            const registerForm = document.getElementById('register-form');
+            const searchForm = document.getElementById('search-form');
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            
+            tabBtns.forEach(btn => btn.classList.remove('active'));
+            
+            if (tabName === 'register') {
+                registerForm.style.display = 'block';
+                searchForm.style.display = 'none';
+                tabBtns[0].classList.add('active');
+            } else {
+                registerForm.style.display = 'none';
+                searchForm.style.display = 'block';
+                tabBtns[1].classList.add('active');
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            });
+        }
+
+        // Form validation
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Basic form validation
+                const requiredFields = this.querySelectorAll('[required]');
+                let isValid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.style.borderColor = '#ef4444';
+                    } else {
+                        field.style.borderColor = '#e2e8f0';
+                    }
+                });
+                
+                if (isValid) {
+                    // Show success message
+                    alert('Form submitted successfully! We will contact you soon.');
+                    this.reset();
+                } else {
+                    alert('Please fill in all required fields.');
+                }
+            });
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.feature-card, .profile-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.backgroundColor = 'var(--bg-primary)';
+                header.style.backdropFilter = 'blur(8px)';
+            }
+        });
+    </script>
+</body>
+</html>
